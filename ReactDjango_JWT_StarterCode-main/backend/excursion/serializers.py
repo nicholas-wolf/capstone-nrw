@@ -7,5 +7,5 @@ class ExcursionSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Excursion
-        fields = ['id', 'user','place','text', 'date']
+        fields = ['id', 'user','place_id','text', 'date']
         depth = 1

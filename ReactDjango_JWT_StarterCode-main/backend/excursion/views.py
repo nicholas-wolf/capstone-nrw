@@ -13,7 +13,7 @@ from .serializers import ExcursionSerializer
 @api_view(['GET'])
 @permission_classes([AllowAny])
 def get_all_excursions(request, pk):
-    excursions = Excursion.objects.filter(place_id=pk)
+    excursions = Excursion.objects.filter(excursion_id=pk)
     serializer = ExcursionSerializer(excursions, many=True)
     return Response(serializer.data, status=status.HTTP_200_OK)
 
