@@ -41,9 +41,9 @@ INSTALLED_APPS = [
     'authentication.apps.AuthenticationConfig',
     'corsheaders',
     'cars.apps.CarsConfig',  # This app is for example use only
-    'excursion',
-    'place',
-    'reply'
+    'excursion.apps.ExcursionConfig',
+    'place.apps.PlaceConfig',
+    'reply.apps.ReplyConfig',
 ]
 
 MIDDLEWARE = [
