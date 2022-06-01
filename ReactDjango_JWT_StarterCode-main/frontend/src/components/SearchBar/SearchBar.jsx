@@ -90,7 +90,7 @@ export default function SearchBar(props) {
                   component="div"
                   sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
               >
-                  <Link to="/" style={{ textDecoration: "none", color: "black", fontSize:'2.25rem' }}>
+                  <Link to="/" style={{ textDecoration: "none", color: "black", fontSize:'2.25rem', fontFamily:'fantasy' }}>
                     <b>Ride Buddy</b>
                   </Link>
               </Typography>

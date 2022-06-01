@@ -34,10 +34,11 @@ button:hover {
 }
 
 .container {
-  margin: 0 auto;
+  margin: 1 auto;
   max-width: 600px;
   overflow: auto;
-  text-align: center;
+  text-align: right;
+  font-family: fantasy;
 }
 
 .form {
@@ -55,4 +56,25 @@ button:hover {
   margin: 5px;
   padding: 3px 7px;
   font-size: 17px;
+}
+
+.containerLeft {
+  margin-top: 1rem ;
+  max-width: 1075px;
+  overflow: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-family: fantasy;
+}
+
+.containerRight {
+  margin: 5rem;
+  max-width: 1264px;
+  display: flex;
+  flex-direction: row-reverse;
+  text-align: right;
+  font-family: fantasy;
+  justify-content: center;
+  align-items: center;
 }
