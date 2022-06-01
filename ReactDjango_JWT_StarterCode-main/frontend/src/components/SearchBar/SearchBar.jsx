@@ -11,6 +11,9 @@ import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import { Navigate, useNavigate, Link } from 'react-router-dom';
 import AuthContext from '../../context/AuthContext';
+import img1 from '../../assets/RC.png'
+
+
 
 
 const Search = styled('div')(({ theme }) => ({
@@ -87,10 +90,13 @@ export default function SearchBar(props) {
                   component="div"
                   sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
               >
-                  <Link to="/" style={{ textDecoration: "none", color: "white" }}>
+                  <Link to="/" style={{ textDecoration: "none", color: "black", fontSize:'2.25rem' }}>
                     <b>Ride Buddy</b>
                   </Link>
               </Typography>
+              <Box component="span" sx={{ p: 2, border: '1px dashed grey',  display:'flex' }}>
+                <img style={{maxHeight:'50px', minWidth:'100px'}} src={img1} alt=''/>
+              </Box>
               <Search >
                     <IconButton type="submit" onClick={handleSubmit}>
                     <SearchIconWrapper>
