@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import AuthContext from "../../context/AuthContext";
 import useCustomForm from "../../hooks/useCustomForm";
+import axios from "axios";
 
 const RegisterPage = () => {
   const { registerUser } = useContext(AuthContext);
@@ -11,6 +12,10 @@ const RegisterPage = () => {
     firstName: "",
     lastName: "",
   };
+
+
+
+
   const [formData, handleInputChange, handleSubmit] = useCustomForm(
     defaultValues,
     registerUser

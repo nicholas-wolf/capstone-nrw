@@ -11,7 +11,8 @@ import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import { Navigate, useNavigate, Link } from 'react-router-dom';
 import AuthContext from '../../context/AuthContext';
-import img1 from '../../assets/RC.png'
+import axios from 'axios';
+import img2 from '../../assets/RC.svg'
 
 
 
@@ -57,17 +58,57 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
+const getUserData = async () => {
+    try{
+        let response = await axios.get(
+            `http://localhost:8000/admin/authentication/user/`
+        )
+            return response
+         } catch (error) {
+                console.log(error.message);
+    }
+}
+
+const fetchResults = async (searchTerm) => {
+    let responseOne = getUserData()
+    let location = `${responseOne.latitude} ${responseOne.longitude}`
+    try{
+      let response =await axios.get(
+        `https://maps.googleapis.com/maps/api/place/nearbysearch/json`,
+        {
+          params: {
+            key: process.env.REACT_APP_GOOGLE_API_KEY,
+            keyword: searchTerm,
+            location: location,
+            radius: 50000
+
+          }
+        }
+      )
+      return response
+    } catch (error) {
+      console.log(error.message);
+      let response;
+      response.longitude=''
+      response.latitude=''
+      return response;
+    }
+
+}
+
 export default function SearchBar(props) {
   const navigate = useNavigate();
   const [searchTerm, setSearchTerm] = useState('');
   const { logoutUser, user } = useContext(AuthContext);
+
+
   
 
 
   function handleSubmit(event){
     event.preventDefault();
-    let newSearchTerm = searchTerm
-    props.submitSearch(newSearchTerm)
+    let results = fetchResults(searchTerm)
+    console.log(results)
     navigate('/results')
 }
 
@@ -84,21 +125,22 @@ export default function SearchBar(props) {
               >
                   <MenuIcon />
               </IconButton>
+              <Box component="span" sx={{  p: 2, border: '1px dashed grey',  display:'flex' }}>
+                <img style={{maxHeight:'50px', minWidth:'100px', stroke:"white"}} src={img2} alt=''/>
+              </Box>
               <Typography
                   variant="h6"
                   noWrap
                   component="div"
                   sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
               >
-                  <Link to="/" style={{ textDecoration: "none", color: "black", fontSize:'2.25rem', fontFamily:'fantasy' }}>
-                    <b>Ride Buddy</b>
+                  <Link to="/" style={{ textDecoration: "none"}}>
+                    <b style={{ display:"flex", marginTop:".5rem", textAlign:"center", flexGrow: 1, alignItems:"center", justifyContent: "center", color: "white", fontSize:'2rem', fontFamily:'copperplate'}}>Ride Buddy</b>
                   </Link>
               </Typography>
-              <Box component="span" sx={{ p: 2, border: '1px dashed grey',  display:'flex' }}>
-                <img style={{maxHeight:'50px', minWidth:'100px'}} src={img1} alt=''/>
-              </Box>
+              
               <Search >
-                    <IconButton type="submit" onClick={handleSubmit}>
+                    <IconButton color="inherit" type="submit" onClick={handleSubmit}>
                     <SearchIconWrapper>
                       <SearchIcon />
                     </SearchIconWrapper>
@@ -112,7 +154,7 @@ export default function SearchBar(props) {
               </Search>
               <li>
                 {user ? (
-                  <button onClick={logoutUser}>Logout</button>
+                  <button style={{color:"white", border:"none" }} onClick={logoutUser}>Logout</button>
                 ) : (
                   <button onClick={() => Navigate("/login")}>Login</button>
                 )}

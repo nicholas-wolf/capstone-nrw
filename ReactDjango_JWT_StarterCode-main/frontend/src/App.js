@@ -1,6 +1,8 @@
 // General Imports
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
 import "./App.css";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 // Pages Imports
 import HomePage from "./pages/HomePage/HomePage";
@@ -15,7 +17,42 @@ import SearchBar from './components/SearchBar/SearchBar';
 import PrivateRoute from "./utils/PrivateRoute";
 
 
+
 function App() {
+  const [videoResults, setVideoResults] = useState();
+  const navigate = useNavigate();
+
+  if (process.env.NODE_ENV !== "production") {
+    console.log("It's working!");
+  }
+
+  useEffect(() => {
+    fetchResults("starwars");
+  }, []);
+
+  const fetchResults = async (searchTerm) => {
+    try {
+      let response = await axios.get(
+        `https://www.googleapis.com/youtube/v3/search`,
+        {
+          params: {
+            q: searchTerm,
+            key: process.env.REACT_APP_YT_API_KEY,
+            part: "snippet",
+            type: "video",
+            maxResults: 5,
+          },
+        }
+      );
+      setVideoResults(response.data.items);
+      navigate("/");
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
+
+
   return (
     <div>
       <SearchBar />

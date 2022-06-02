@@ -10,3 +10,4 @@ class Place(models.Model):
     website = models.CharField(max_length=255)
     name = models.CharField(max_length=255)
     
+    

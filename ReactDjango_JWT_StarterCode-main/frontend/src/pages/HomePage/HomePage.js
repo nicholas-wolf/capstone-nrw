@@ -33,12 +33,12 @@ const HomePage = () => {
         <h1 style={{textAlign:'center', marginTop:'1rem', fontFamily:'fantasy', fontSize:'2.25rem'}}> Welcome to Ride Buddy {user.username}!</h1>
       </div>
     <div className="containerLeft">
-      <img style={{maxHeight:'500px', minWidth:'200px', margin:'1rem', justifyContent:'left'}} src={img2} alt=''/>
-      <h2>Do you love amusement parks, and riding rides, but your friends hate rides?</h2>  
+      <img style={{maxWidth:'500px', minWidth:'200px', margin:'1rem', justifyContent:'left'}} src={img2} alt=''/>
+      <p style={{fontSize:"1.5rem" }}>Do you love amusement parks, and riding rides, but your friends hate rides?</p>  
     </div>
     <div className="containerRight">
-      <img style={{maxHeight:'500px', minWidth:'200px', margin:'1rem', justifyContent:'right'}} src={img3} alt=''/>
-      <h2>Well your in the right place! Search for a amusement park near you, and find other ride enthusiasts!</h2>
+      <p style={{fontSize:"1.5rem" }}>Well your in the right place! Search for a amusement park near you, and find other ride enthusiasts!</p>
+      <img style={{maxWidth:'500px', minWidth:'200px', margin:'1rem', justifyContent:'right'}} src={img3} alt=''/>
     </div>
     </div>
   );

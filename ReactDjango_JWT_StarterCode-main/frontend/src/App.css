@@ -60,21 +60,24 @@ button:hover {
 
 .containerLeft {
   margin-top: 1rem ;
-  max-width: 1075px;
-  overflow: auto;
+  
+  
   display: flex;
   flex-direction: row;
   align-items: center;
-  font-family: fantasy;
+  font-family: copperplate;
+  
 }
 
 .containerRight {
   margin: 5rem;
-  max-width: 1264px;
+  
   display: flex;
-  flex-direction: row-reverse;
+  
   text-align: right;
-  font-family: fantasy;
-  justify-content: center;
+  font-family: copperplate;
+  
   align-items: center;
+  
+  float:right;
 }
