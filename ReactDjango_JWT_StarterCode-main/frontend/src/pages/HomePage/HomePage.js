@@ -4,13 +4,15 @@ import useAuth from "../../hooks/useAuth";
 import axios from "axios";
 import img2 from "../../assets/roller-coaster.jpeg"
 import img3 from "../../assets/TR.jpg"
+import GoogleMaps from "../../components/GoogleMap/GoogleMap";
+
 
 const HomePage = () => {
   // The "user" value from this Hook contains the decoded logged in user information (username, first name, id)
   // The "token" value is the JWT token that you will send in the header of any request requiring authentication
   //TODO: Add an AddCars Page to add a car for a logged in user's garage
   const [user, token] = useAuth();
-  const [cars, setCars] = useState([]);
+  const [, setCars] = useState([]);
 
   useEffect(() => {
     const fetchCars = async () => {
@@ -40,7 +42,7 @@ const HomePage = () => {
       <p style={{fontSize:"1.5rem" }}>Well your in the right place! Search for a amusement park near you, and find other ride enthusiasts!</p>
       <img style={{maxWidth:'500px', minWidth:'500px', margin:'1rem', justifyContent:'right'}} src={img3} alt=''/>
     </div>
-    
+    <GoogleMaps></GoogleMaps>
     </div>
   );
 };

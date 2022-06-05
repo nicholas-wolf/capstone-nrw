@@ -15,11 +15,13 @@ import SearchBar from './components/SearchBar/SearchBar';
 
 // Util Imports
 import PrivateRoute from "./utils/PrivateRoute";
+import GoogleMaps from "./components/GoogleMap/GoogleMap";
+import PlaceMap from './components/GoogleMap/GoogleMap';
 
 
 
 function App() {
-  const [videoResults, setVideoResults] = useState();
+  const [, setVideoResults] = useState();
   const navigate = useNavigate();
 
   if (process.env.NODE_ENV !== "production") {
@@ -55,7 +57,8 @@ function App() {
 
   return (
     <div>
-      <SearchBar />
+      <PlaceMap/>
+      {/* <SearchBar />
       <Routes>
         <Route
           path="/"
@@ -68,7 +71,7 @@ function App() {
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
       </Routes>
-      <Footer />
+      <Footer /> */}
     </div>
   );
 }
