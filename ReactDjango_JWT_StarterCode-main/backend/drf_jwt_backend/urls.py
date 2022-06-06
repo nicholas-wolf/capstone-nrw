@@ -23,4 +23,5 @@ urlpatterns = [
     path('api/excursion/', include('excursion.urls')),
     path('api/place/', include('place.urls')),
     path('api/reply/', include('reply.urls')),
+    path('api/nearbyParks/', include('nearbyParks.urls')),
 ]

@@ -60,7 +60,7 @@ button:hover {
 
 .containerLeft {
   margin-top: 1rem ;
-  
+  margin-right: 4rem;
   
   display: flex;
   flex-direction: row;
@@ -71,6 +71,7 @@ button:hover {
 
 .containerRight {
   margin: 5rem;
+  margin-right: 6rem;
   
   display: flex;
   

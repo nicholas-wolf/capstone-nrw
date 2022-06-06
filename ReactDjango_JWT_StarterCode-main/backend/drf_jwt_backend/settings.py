@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'excursion.apps.ExcursionConfig',
     'place.apps.PlaceConfig',
     'reply.apps.ReplyConfig',
+    'nearbyParks.apps.NearbyparksConfig'
 ]
 
 MIDDLEWARE = [
