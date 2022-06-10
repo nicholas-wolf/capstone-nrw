@@ -6,10 +6,10 @@ const useStyles = makeStyles({
   input: {
     fontFamily: "sans-serif",
     color: "white",
-    fontSize: "14px",
+    fontSize: "16px",
     height: "50px",
     "& .react-date-picker__wrapper": {
-      padding: "0 10px",
+      padding: "0 25px",
       borderColor: "#ccc",
       borderRadius: "4px",     
     },
@@ -25,11 +25,10 @@ const useStyles = makeStyles({
   },
   label: {
     color: 'white',
-    width: "58px",
     marginTop: "-10 rem",
     marginLeft: "12px",
     zIndex: "2000",
-    fontSize: "13px",
+    fontSize: "15px",
     fontFamily: "sans-serif",
     paddingLeft: "10px",
     display: "flex",
@@ -46,7 +45,7 @@ export default function DateForm({ date, setDate}) {
       <div>
         <label className={classes.label}>Excursion Date</label>
         <DatePick
-          sx={{marginBottom:'10rem', color:'white'}}
+          sx={{marginBottom:'10rem', color:'white', width: '300px'}}
           minDate={new Date()}
           value={value}
           onChange={onChange}

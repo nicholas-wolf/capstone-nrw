@@ -7,6 +7,7 @@ import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import parse from 'autosuggest-highlight/parse';
 import throttle from 'lodash/throttle';
+import { styled } from '@mui/material/styles';
 
 // This key was created specifically for the demo in mui.com.
 // You need to create a new one for your application.
@@ -26,6 +27,17 @@ function loadScript(src, position, id) {
 
 const autocompleteService = { current: null };
 
+const CssTextField = styled(TextField)({
+  '& .css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root': {
+    color: 'white',
+  },
+  '& .MuiOutlinedInput-notchedOutline': {
+    borderColor: 'white',
+  },
+  
+  '& .css-i4bv87-MuiSvgIcon-root': {
+    color: 'white',
+  }})
 export default function ParkSearch({placeID, setPlaceID}) {
 
   const [inputValue, setInputValue] = React.useState('');
@@ -92,7 +104,7 @@ export default function ParkSearch({placeID, setPlaceID}) {
   return (
     <Autocomplete
       id="google-map-demo"
-      sx={{ width: 435 }}
+      sx={{ width: 435, color: 'white' }}
       getOptionLabel={(option) =>
         typeof option === 'string' ? option : option.description
       }
@@ -111,7 +123,7 @@ export default function ParkSearch({placeID, setPlaceID}) {
         setInputValue(newInputValue);
       }}
       renderInput={(params) => (
-        <TextField sx={{ input: { color: 'white' } }}{...params} label="Enter park name" fullWidth />
+        <CssTextField sx={{ input: { color: 'white' } }}{...params} label="Enter park name" fullWidth />
       )}
       renderOption={(props, option) => {
         const matches = option.structured_formatting.main_text_matched_substrings;

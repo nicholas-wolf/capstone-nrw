@@ -1,3 +1,5 @@
+
+
 export const modalStyles = {
     wrapper: {
         position: 'absolute',
@@ -21,6 +23,17 @@ export const modalStyles = {
     buttons: {
         display: 'flex',
         justifyContent: 'end',
+        width: '150px',
+        height: '50px',
+        Border: '1px solid #333',
+        fontFamily: 'Cinzel, serif',
+        fontSize: '15px',        
+        cursor: 'pointer',
+        webkitTapHighlightColor: 'transparent',
+        alignItems: 'stretch',
+        position: 'relative',
+        zIndex: 0,
+        transition: '1s',
     },
     newExcursionForm: {
         display: 'flex',
@@ -34,4 +47,6 @@ export const modalStyles = {
         fontWeight: 'bold',
         textDecoration: 'underline'          
     },
-};
+
+    
+}    

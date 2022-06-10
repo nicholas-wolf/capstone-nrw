@@ -66,7 +66,7 @@ const CreateExcursionModal = ({ open, close }) => {
                     variant="h6"
                     component="h2"
                 >
-                   New Excursion
+                   Create Excursion
                 </Typography>
                 <Typography sx={{ mt: 2, color: 'white' }}>
                     Fill out inputs and hit 'submit' button.
@@ -82,13 +82,13 @@ const CreateExcursionModal = ({ open, close }) => {
                 />
                 </Box>
                 <Box>
-                <DateForm
+                <DateForm sx={{width:'300px'}}
                     date={date}
                     setDate={setDate}
                 />
                 </Box>
-                <Box sx={modalStyles.buttons}>
-                    <Button
+                <Box sx={{display: 'flex', justifyContent: 'flex-end'}}>
+                    <Button sx={modalStyles.buttons}
                         variant="contained"
                         onClick={onSubmit}
                     >
