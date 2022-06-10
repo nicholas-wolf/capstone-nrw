@@ -28,6 +28,7 @@ def get_excursions(request, place_id):
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def create_excursion(request):
+    print(request.data)
     serializer = ExcursionSerializer(data=request.data)
     if serializer.is_valid():
         serializer.save(user=request.user)

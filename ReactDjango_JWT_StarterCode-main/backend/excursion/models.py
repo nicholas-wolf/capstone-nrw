@@ -8,7 +8,7 @@ from datetime import date
 
 class Excursion(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    place = models.ForeignKey(Place, on_delete=models.CASCADE)
+    place_id = models.CharField(max_length=255)
     text = models.CharField(max_length=255)
-    date = models.DateField(default=date.today)
+    date = models.DateField()
 

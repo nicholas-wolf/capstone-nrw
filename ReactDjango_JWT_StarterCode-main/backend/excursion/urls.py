@@ -5,5 +5,5 @@ from excursion import views
 
 urlpatterns = [
     path('', views.create_excursion),
-    path('<str:video_id>', views.get_excursions),
+    path('<str:place_id>', views.get_excursions),
 ]

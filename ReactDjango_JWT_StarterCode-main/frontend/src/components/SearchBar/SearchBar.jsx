@@ -9,7 +9,6 @@ import MenuIcon from '@mui/icons-material/Menu';
 import { Navigate, Link } from 'react-router-dom';
 import AuthContext from '../../context/AuthContext';
 import img2 from '../../assets/RC.svg'
-import Search from "../Search/Search"
 import "./SearchBar.css";
 
 
@@ -42,7 +41,6 @@ export default function SearchBar() {
                     <b className="searchBarTitle">Ride Buddy</b>
                   </Link>
                 </Typography>
-                <Search/>
                 {user ? (
                     <button className="searchBarLogoutButton" onClick={logoutUser}>Logout</button>
                   ) : (

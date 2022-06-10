@@ -5,28 +5,6 @@ import jwtDecode from "jwt-decode";
 
 const AuthContext = createContext();
 
-const fetchLocation = async () => {
-    try{
-      let response =await axios.post(
-        `https://www.googleapis.com/geolocation/v1/geolocate`,
-        {
-          params: {
-            key: process.env.REACT_APP_GOOGLE_API_KEY,
-
-          }
-        }
-      )
-      return response
-    } catch (error) {
-      console.log(error.message);
-      let response;
-      response.longitude=''
-      response.latitude=''
-      return response;
-    }
-
-}
-
 export default AuthContext;
 
 function setUserObject(user) {
@@ -50,8 +28,6 @@ export const AuthProvider = ({ children }) => {
   const navigate = useNavigate();
 
   const registerUser = async (registerData) => {
-    let responseOne = fetchLocation()
-    
     
     try {
       let finalData = {
@@ -59,9 +35,7 @@ export const AuthProvider = ({ children }) => {
         password: registerData.password,
         email: registerData.email,
         first_name: registerData.firstName,
-        last_name: registerData.lastName,
-        longitude: responseOne.longitude,
-        latitude: responseOne.latitude
+        last_name: registerData.lastName
       };
       let response = await axios.post(`${BASE_URL}/register/`, finalData);
       if (response.status === 201) {

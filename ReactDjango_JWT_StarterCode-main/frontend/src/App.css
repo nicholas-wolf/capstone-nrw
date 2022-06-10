@@ -34,6 +34,7 @@ button:hover {
 }
 
 .container {
+  margin-top: 7rem;
   margin: 1 auto;
   max-width: 600px;
   overflow: auto;
@@ -60,7 +61,7 @@ button:hover {
 
 .containerLeft {
   margin-top: 1rem ;
-  margin-right: 4rem;
+  margin-right: 6rem;
   
   display: flex;
   flex-direction: row;

@@ -3,8 +3,6 @@ from django.contrib.auth.models import AbstractUser
 
 
 class User(AbstractUser):
-    latitude = models.FloatField(null=True)
-    longitude = models.FloatField(null=True)
     '''
     This is a custom version of the built in User class
     It contains all of the built in fields and functionality of the standard User

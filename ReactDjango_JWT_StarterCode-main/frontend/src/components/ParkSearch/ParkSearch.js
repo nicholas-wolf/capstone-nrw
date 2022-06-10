@@ -26,8 +26,8 @@ function loadScript(src, position, id) {
 
 const autocompleteService = { current: null };
 
-export default function GoogleMaps() {
-  const [value, setValue] = React.useState(null);
+export default function ParkSearch({placeID, setPlaceID}) {
+
   const [inputValue, setInputValue] = React.useState('');
   const [options, setOptions] = React.useState([]);
   const loaded = React.useRef(false);
@@ -64,7 +64,7 @@ export default function GoogleMaps() {
     }
 
     if (inputValue === '') {
-      setOptions(value ? [value] : []);
+      setOptions(placeID ? [placeID] : []);
       return undefined;
     }
 
@@ -72,8 +72,8 @@ export default function GoogleMaps() {
       if (active) {
         let newOptions = [];
 
-        if (value) {
-          newOptions = [value];
+        if (placeID) {
+          newOptions = [placeID];
         }
 
         if (results) {
@@ -87,12 +87,12 @@ export default function GoogleMaps() {
     return () => {
       active = false;
     };
-  }, [value, inputValue, fetch]);
+  }, [placeID, inputValue, fetch]);
 
   return (
     <Autocomplete
       id="google-map-demo"
-      sx={{ width: 300 }}
+      sx={{ width: 435 }}
       getOptionLabel={(option) =>
         typeof option === 'string' ? option : option.description
       }
@@ -101,16 +101,17 @@ export default function GoogleMaps() {
       autoComplete
       includeInputInList
       filterSelectedOptions
-      value={value}
+      value={placeID}
       onChange={(event, newValue) => {
         setOptions(newValue ? [newValue, ...options] : options);
-        setValue(newValue);
+        console.log(newValue)
+        setPlaceID(newValue.place_id);
       }}
       onInputChange={(event, newInputValue) => {
         setInputValue(newInputValue);
       }}
       renderInput={(params) => (
-        <TextField {...params} label="Enter park name" fullWidth />
+        <TextField sx={{ input: { color: 'white' } }}{...params} label="Enter park name" fullWidth />
       )}
       renderOption={(props, option) => {
         const matches = option.structured_formatting.main_text_matched_substrings;
@@ -121,14 +122,14 @@ export default function GoogleMaps() {
 
         return (
           <li {...props}>
-            <Grid container alignItems="center">
+            <Grid sx={{border:'white'}}container alignItems="center">
               <Grid item>
                 <Box
                   component={LocationOnIcon}
-                  sx={{ color: 'text.secondary', mr: 2 }}
+                  sx={{ color: 'white', mr: 2 , border: 'white'}}
                 />
               </Grid>
-              <Grid item xs>
+              <Grid sx={{border:'white'}}item xs>
                 {parts.map((part, index) => (
                   <span
                     key={index}
@@ -140,7 +141,7 @@ export default function GoogleMaps() {
                   </span>
                 ))}
 
-                <Typography variant="body2" color="text.secondary">
+                <Typography variant="body2" color="white">
                   {option.structured_formatting.secondary_text}
                 </Typography>
               </Grid>

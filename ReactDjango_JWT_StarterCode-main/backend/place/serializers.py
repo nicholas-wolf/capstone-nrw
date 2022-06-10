@@ -7,4 +7,4 @@ class PlaceSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Place
-        fields = ['id', 'maps_url', 'address', 'website', 'name']
+        fields = ['id', 'place_id']
