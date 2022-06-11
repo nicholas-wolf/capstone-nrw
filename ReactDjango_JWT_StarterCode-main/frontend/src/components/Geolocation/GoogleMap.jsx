@@ -33,7 +33,7 @@ function Map() {
     }, [])
   
     return isLoaded ? (
-        <GoogleMap
+        <GoogleMap sx={{marginTop:'5rem'}}
           mapContainerStyle={containerStyle}
           center={center}
           zoom={6}

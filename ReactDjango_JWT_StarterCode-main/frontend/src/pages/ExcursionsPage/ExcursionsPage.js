@@ -2,10 +2,10 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { URL_HOST } from "../../urlHost";
 import Excursion from '../../components/Excursion/Excursion';
-import GoogleMap from "../../components/Geolocation/GoogleMap";
+import ParkDirectionsMap from "../../components/ParkDirectionsMap/ParkDirectionsMap";
 
 
-const ExcursionsPage = (excursionId) => {
+const ExcursionsPage = (excursionId, placeID) => {
     const [excursions, setExcursions] = useState([]);
 
     useEffect(() => {
@@ -37,7 +37,7 @@ const ExcursionsPage = (excursionId) => {
                 ) : (
                     <p>Loading...</p>
                 )}
-            <GoogleMap/>
+            <ParkDirectionsMap placeID={placeID}/>
             </div>
             
     );

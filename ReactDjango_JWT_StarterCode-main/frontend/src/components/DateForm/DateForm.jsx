@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import { makeStyles } from "@material-ui/core";
-import { default as DatePick } from "react-date-picker";
+
 
 const useStyles = makeStyles({
   input: {
@@ -36,22 +36,23 @@ const useStyles = makeStyles({
 });
 
 
-export default function DateForm({ date, setDate}) {
+export default function DateForm ({date, setDate}) {
   const classes = useStyles();
-  const [value, onChange] = useState(new Date("02/22/2021"));
 
   return (
     <div>
       <div>
         <label className={classes.label}>Excursion Date</label>
-        <DatePick
-          sx={{marginBottom:'10rem', color:'white', width: '300px'}}
-          minDate={new Date()}
-          value={value}
-          onChange={onChange}
-          className={classes.input}
-        />
+        <input 
+        className={"datePicker"} 
+        type="date" 
+        date={date}
+        id="excursionDate" 
+        name="excursionDate" 
+        selected={date}
+        onChange={(event) => {setDate(event.target.value)}}
+        ></input>
       </div>
     </div>
   );
-}
+};

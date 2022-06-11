@@ -15,10 +15,9 @@ import useAuth from '../../hooks/useAuth';
 
 
 
-const CreateExcursionModal = ({ open, close }) => {
+const CreateExcursionModal = ({ open, close, placeID, setPlaceID }) => {
     const [excursion, setExcursion] = useState('');
     const [date, setDate] = useState(moment(new Date()).format("DD/MM/YYYY"));
-    const [placeID, setPlaceID] = useState('');
     const [user, token] = useAuth();
     const navigate = useNavigate();
 
@@ -41,7 +40,7 @@ const CreateExcursionModal = ({ open, close }) => {
         try {
             await axios.post(
               `${URL_HOST}/api/excursion/`,
-              { user: user.username, place_id: placeID, text: excursion, date: date.toISOString().split('T')[0] },
+              { user: user.username, place_id: placeID, text: excursion, date: new date.toISOString().split('T')[0] },
               {
                 headers: {
                   Authorization: `Bearer ${token}`,
