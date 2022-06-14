@@ -43,14 +43,14 @@ export default function ExcursionTextForm({ excursion, setExcursion}) {
         noValidate
         autoComplete="off"
     >
-        <FormControl sx={{ width: '435px', marginBottom: '1rem', marginTop: '1rem', color: 'white' }}
+        <FormControl sx={{ width: '435px', marginTop: '1rem', color: 'white' }}
             variant="standard">
         
         <CssTextField sx={{ input: { color: 'white'  } }}
             label="Excursion" 
             excursion={excursion}
             multiline
-            minRows={4}
+            minRows={'8'}
             onChange={(event) => {setExcursion(event.target.value)}}
             />     
             </FormControl>     

@@ -1,29 +1,41 @@
-import React, { useState, useEffect } from "react";
+import React, {useState, useEffect} from "react";
+// import Excursion from '../../components/Excursion/Excursion';
+import ParkDirectionsMap from "../../components/ParkDirectionsMap/ParkDirectionsMap";
+import ParkMap from '../../components/ParkMap/ParkMap';
 import axios from "axios";
 import { URL_HOST } from "../../urlHost";
-import Excursion from '../../components/Excursion/Excursion';
-import ParkDirectionsMap from "../../components/ParkDirectionsMap/ParkDirectionsMap";
+import useAuth from "../../hooks/useAuth";
+import Excursion from "../../components/Excursion/Excursion";
+
+const ExcursionsPage = ({latitude, longitude, placeID, address}) => {
+  const [excursions, setExcursions] = useState([]);
+  const [user, token] = useAuth();
+  console.log(excursions)
+ 
+  useEffect(() => {
+    try {
+       axios.get(`${URL_HOST}/api/excursion/${placeID}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }).then( (response) => {
+        setExcursions(response.data);
+      });
+    } catch (error) {
+      console.log(error.message);
+    }
+  }, [placeID])
 
 
-const ExcursionsPage = (excursionId, placeID) => {
-    const [excursions, setExcursions] = useState([]);
-
-    useEffect(() => {
-        fetchExcursions(excursionId);
-      }, [excursionId]);
-
-    const fetchExcursions = async (excursionId) => {
-        try {
-          let response = await axios.get(`${URL_HOST}/api/excursion/${excursionId}`);
-          setExcursions(response.data);
-          console.log(response.data)
-        } catch (error) {
-          console.log(error.message);
-        }
-      };
         return (
             <div> 
-                {excursions ? (
+              <ParkDirectionsMap 
+                placeID={placeID}
+                latitude={latitude}
+                longitude={longitude}
+              />
+              < ParkMap address={address}/>
+              {excursions ? (
                 excursions.map((excursion) => {
                 return (
                     <Excursion
@@ -37,7 +49,6 @@ const ExcursionsPage = (excursionId, placeID) => {
                 ) : (
                     <p>Loading...</p>
                 )}
-            <ParkDirectionsMap placeID={placeID}/>
             </div>
             
     );

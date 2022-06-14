@@ -38,7 +38,7 @@ const CssTextField = styled(TextField)({
   '& .css-i4bv87-MuiSvgIcon-root': {
     color: 'white',
   }})
-export default function ParkSearch({placeID, setPlaceID}) {
+export default function ParkSearch({placeID, setPlaceID, setAddress}) {
 
   const [inputValue, setInputValue] = React.useState('');
   const [options, setOptions] = React.useState([]);
@@ -116,8 +116,9 @@ export default function ParkSearch({placeID, setPlaceID}) {
       value={placeID}
       onChange={(event, newValue) => {
         setOptions(newValue ? [newValue, ...options] : options);
-        console.log(newValue)
+        // console.log(newValue)
         setPlaceID(newValue.place_id);
+        setAddress(newValue.description)
       }}
       onInputChange={(event, newInputValue) => {
         setInputValue(newInputValue);

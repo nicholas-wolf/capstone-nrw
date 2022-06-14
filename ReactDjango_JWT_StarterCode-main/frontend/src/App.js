@@ -17,31 +17,53 @@ import SearchBar from './components/SearchBar/SearchBar';
 // Util Imports
 import PrivateRoute from "./utils/PrivateRoute";
 
-
-
-
-
 function App() {
   const [placeID, setPlaceID] = useState('');
-  console.log("**********",placeID)
+  const [longitude, setLongitude] = useState("")
+  const [latitude, setLatitude] = useState("")
+  const [address, setAddress] = useState("")
+
+  var options = {
+      enableHighAccuracy: true,
+      timeout: 5000,
+      maximumAge: 0
+  };
+  
+  function success(pos) {
+      var crd = pos.coords;
+      setLongitude(crd.longitude)
+      setLatitude(crd.latitude)
+  }
+  
+  function error(err) {
+      console.warn(`ERROR(${err.code}): ${err.message}`);
+  }
+  
+  navigator.geolocation.getCurrentPosition(success, error, options);
 
   return (
-    <div>
-      
+    <div>     
       <SearchBar />
       <Routes>
         <Route
           path="/"
           element={
             <PrivateRoute>
-              <HomePage placeID={placeID} setPlaceID={setPlaceID} />
-              
+              <HomePage 
+                placeID={placeID} 
+                setPlaceID={setPlaceID} 
+                longitude={longitude} 
+                setLongitude={setLongitude}
+                latitude={latitude}
+                setLatitude={setLatitude} 
+                setAddress={setAddress}
+              />              
             </PrivateRoute>
           }
         />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
-        <Route path="/excursions" element={<ExcursionsPage placeID={placeID} />}/>
+        <Route path="/excursions" element={<ExcursionsPage placeID={placeID} longitude={longitude} latitude={latitude} address={address} />}/>
       </Routes>
       <Footer />
     </div>
@@ -49,29 +71,3 @@ function App() {
 }
 
 export default App;
-
-
-  // useEffect(() => {
-  //   fetchResults("starwars");
-  // }, []);
-
-  // const fetchResults = async (searchTerm) => {
-  //   try {
-  //     let response = await axios.get(
-  //       `https://www.googleapis.com/youtube/v3/search`,
-  //       {
-  //         params: {
-  //           q: searchTerm,
-  //           key: process.env.REACT_APP_YT_API_KEY,
-  //           part: "snippet",
-  //           type: "video",
-  //           maxResults: 5,
-  //         },
-  //       }
-  //     );
-  //     setVideoResults(response.data.items);
-  //     navigate("/");
-  //   } catch (error) {
-  //     console.log(error.message);
-  //   }
-  // };

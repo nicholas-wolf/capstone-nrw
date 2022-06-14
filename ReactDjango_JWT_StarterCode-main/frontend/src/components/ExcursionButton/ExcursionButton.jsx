@@ -3,7 +3,6 @@ import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import ButtonBase from '@mui/material/ButtonBase';
 import Typography from '@mui/material/Typography';
-import { useNavigate } from "react-router-dom";
 
 
 const image = {
@@ -82,11 +81,6 @@ transition: theme.transitions.create('opacity'),
 }));  
 
 export default function ExcursionButton(props) {
-  const navigate = useNavigate();
-
-  const navigateToExcursions= () => {
-    navigate("/excursions");
-  };
 
     return (
       <div >
@@ -97,7 +91,7 @@ export default function ExcursionButton(props) {
             style={{
               width: image.width,
             }}
-            onClick={() => props.setShowExcursionModal(true)}
+            onClick={() => props.setShowCreateExcursionModal(true)}
           >
             <ImageSrc style={{ backgroundImage: `url(${image.url})` }} />
             <ImageBackdrop className="MuiImageBackdrop-root" />
@@ -124,7 +118,7 @@ export default function ExcursionButton(props) {
             style={{
               width: image2.width,
             }}
-            onClick={() => navigateToExcursions()}
+            onClick={() => props.setShowFindExcursionModal(true)}
           >
           <ImageSrc style={{ backgroundImage: `url(${image2.url})` }} />
             <ImageBackdrop className="MuiImageBackdrop-root" />
