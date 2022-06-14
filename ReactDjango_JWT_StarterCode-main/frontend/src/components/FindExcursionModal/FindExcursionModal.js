@@ -1,19 +1,13 @@
-import React, {useState} from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
-import moment from 'moment';
-import { URL_HOST } from "../../urlHost";
-import axios from "axios";
 import ParkSearch from '../ParkSearch/ParkSearch';
-import useAuth from '../../hooks/useAuth';
 import NearbyParkSearchMap from '../NearbyParkSearchMap/NearbyParkSearchMap';
 import "../CreateExcursionModal/CreateExcursionModal.css";
 
 const FindExcursionModal = ({ open, close, placeID, setPlaceID, latitude, longitude, setAddress }) => {
-
-    // const [user, token] = useAuth();
     const navigate = useNavigate();
 
     const onSubmit = async () => {
@@ -29,8 +23,7 @@ const FindExcursionModal = ({ open, close, placeID, setPlaceID, latitude, longit
         <Modal 
         open={open} 
         onClose={close} >
-            <Box>
-                
+            <Box>              
                     <Box className='wrapper'>
                     <NearbyParkSearchMap latitude={latitude} longitude={longitude}/>
                         <Box >

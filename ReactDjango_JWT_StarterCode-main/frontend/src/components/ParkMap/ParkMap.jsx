@@ -34,7 +34,8 @@ Geocode.fromAddress(address).then(
 
 
     return (
-        <div style={{marginTop:'6rem'}}>
+      <h2 style={{textAlign:'center', borderBlock:'thick'}}>Park Map
+        <div style={{marginTop:'1rem'}}>
         {lat ? <iframe title="Park Map"
             width="600"
             height="450"
@@ -42,8 +43,9 @@ Geocode.fromAddress(address).then(
             loading="lazy"
             allowFullScreen
             referrerPolicy="no-referrer-when-downgrade"
-            src={`https://www.google.com/maps/embed/v1/view?key=${process.env.REACT_APP_GOOGLE_MAPS_API_KEY}&center=${lat} ${long}&zoom=18&maptype=satellite`}>
+            src={`https://www.google.com/maps/embed/v1/view?key=${process.env.REACT_APP_GOOGLE_MAPS_API_KEY}&center=${lat} ${long}&zoom=17&maptype=satellite`}>
         </iframe> : <div>Loading...</div>}
         </div>
+        </h2>
     );
 };

@@ -50,7 +50,7 @@ const HomePage = ({placeID, setPlaceID, latitude, setLatitude, longitude, setLon
         latitude={latitude}
         longitude={longitude}
       />
-    </div><ParkMap /></>
+    </div></>
   );
 };
 
